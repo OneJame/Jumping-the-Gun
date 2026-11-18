@@ -4,7 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://do7qjadk4hxh8" path="res://icon.svg" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b3e8ssg8jwpd" path="res://player.gd" id="2_1bvp3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q38y"]
+size = Vector2(120, 120)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("1_h2yge")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1465,33 +1468,35 @@ texture = ExtResource("1_h2yge")
 26:26/0 = 0
 26:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_wfyas"]
+[sub_resource type="TileSet" id="TileSet_3lb3d"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_lquwl")
+sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfyas"]
-size = Vector2(64, 64)
+[node name="Node2D" type="Node2D" unique_id=1046711869]
 
-[node name="Node" type="Node" unique_id=354194796]
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1605642900]
-tile_map_data = PackedByteArray("AAAAAAQAAAAFAAgAAAAAAAUAAAAFAAgAAAABAAYAAAAFAAgAAAACAAYAAAAFAAgAAAACAAcAAAAFAAgAAAADAAcAAAAFAAgAAAADAAgAAAAFAAgAAAAEAAgAAAAFAAgAAAAEAAkAAAAFAAgAAAAFAAkAAAAFAAgAAAAGAAkAAAAFAAgAAAAGAAoAAAAFAAgAAAAHAAoAAAAFAAgAAAAIAAoAAAAFAAgAAAAJAAoAAAAFAAgAAAAKAAoAAAAFAAgAAAALAAoAAAAFAAgAAAAMAAoAAAAFAAgAAAANAAoAAAAFAAgAAAAOAAoAAAAFAAgAAAAOAAkAAAAFAAgAAAAPAAkAAAAFAAgAAAAQAAkAAAAFAAgAAAARAAkAAAAFAAgAAAASAAkAAAAFAAgAAAATAAkAAAAFAAgAAAAUAAkAAAAFAAgAAAAVAAkAAAAFAAgAAAAWAAoAAAAFAAgAAAAXAAoAAAAFAAgAAAAYAAoAAAAFAAgAAAAZAAoAAAAFAAgAAAAaAAsAAAAFAAgAAAAbAAsAAAAFAAgAAAAbAAwAAAAFAAgAAAAcAAwAAAAFAAgAAAAdAA0AAAAFAAgAAAAeAA0AAAAFAAgAAAAfAA0AAAAFAAgAAAAfAA4AAAAFAAgAAAAgAA4AAAAFAAgAAAAhAA4AAAAFAAgAAAAiAA4AAAAFAAgAAAAjAA4AAAAFAAgAAAAkAA0AAAAFAAgAAAAlAA0AAAAFAAgAAAAmAA0AAAAFAAgAAAAnAA0AAAAFAAgAAAAoAA0AAAAFAAgAAAApAA0AAAAFAAgAAAAqAAwAAAAFAAgAAAArAAwAAAAFAAgAAAAsAAwAAAAFAAgAAAAtAAwAAAAFAAgAAAAuAAwAAAAFAAgAAAAvAAwAAAAFAAgAAAAwAAsAAAAFAAgAAAAxAAsAAAAFAAgAAAAyAAsAAAAFAAgAAAAyAAoAAAAFAAgAAAAzAAoAAAAFAAgAAAAzAAkAAAAFAAgAAAA0AAkAAAAFAAgAAAA1AAkAAAAFAAgAAAA1AAgAAAAFAAgAAAA2AAgAAAAFAAgAAAA3AAgAAAAFAAgAAAA4AAkAAAAFAAgAAAA4AAoAAAAFAAgAAAA4AAsAAAAFAAgAAAA3AAwAAAAFAAgAAAA2AAwAAAAFAAgAAAA1AAwAAAAFAAgAAAA0AAwAAAAFAAgAAAAzAAwAAAAFAAgAAAAzAAsAAAAFAAgAAAA0AAsAAAAFAAgAAAA1AAoAAAAFAAgAAAA2AAoAAAAFAAgAAAA3AAoAAAAFAAgAAAA2AAsAAAAFAAgAAAA1AAsAAAAFAAgAAAA3AAsAAAAFAAgAAAA5AAoAAAAFAAgAAAA2AAkAAAAFAAgAAAAmAAYAAAAFAAgAAAAnAAYAAAAFAAgAAAAoAAYAAAAFAAgAAAAoAAcAAAAFAAgAAAApAAcAAAAFAAgAAAAqAAcAAAAFAAgAAAArAAYAAAAFAAgAAAAsAAYAAAAFAAgAAAAtAAYAAAAFAAgAAAAuAAYAAAAFAAgAAAAqAAYAAAAFAAgAAAApAAYAAAAFAAgAAAA=")
-tile_set = SubResource("TileSet_wfyas")
-
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1204879964]
-position = Vector2(120, -6)
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1865652797]
 script = ExtResource("2_1bvp3")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1068474640]
-position = Vector2(-29.999998, 29.999998)
-scale = Vector2(0.5234375, 0.5234375)
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=262713146]
 texture = ExtResource("1_ig7tw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1647475435]
-position = Vector2(-30, 30)
-shape = SubResource("RectangleShape2D_wfyas")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1844094590]
+shape = SubResource("RectangleShape2D_5q38y")
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1285348792]
-position = Vector2(-30, 30)
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1856859019]
 position_smoothing_enabled = true
-position_smoothing_speed = 15.0
+position_smoothing_speed = 7.0
+
+[node name="Gun" type="Node2D" parent="Player" unique_id=1666259827]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Gun" unique_id=163442604]
+position = Vector2(64, 1)
+scale = Vector2(0.62890625, 0.1015625)
+texture = ExtResource("1_ig7tw")
+
+[node name="Marker2D" type="Marker2D" parent="Player/Gun" unique_id=1551704275]
+position = Vector2(101, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1932323625]
+tile_map_data = PackedByteArray("AADV/w0AAAAMAAkAAADW/w0AAAAMAAkAAADX/w0AAAAMAAkAAADY/w4AAAAMAAkAAADZ/w4AAAAMAAkAAADa/w4AAAAMAAkAAADa/w8AAAAMAAkAAADb/w8AAAAMAAkAAADc/w8AAAAMAAkAAADd/w8AAAAMAAkAAADd/xAAAAAMAAkAAADe/xAAAAAMAAkAAADf/xAAAAAMAAkAAADg/xAAAAAMAAkAAADh/xAAAAAMAAkAAADi/xAAAAAMAAkAAADj/xAAAAAMAAkAAADk/xAAAAAMAAkAAADl/xAAAAAMAAkAAADm/xAAAAAMAAkAAADn/xAAAAAMAAkAAADo/xAAAAAMAAkAAADp/xAAAAAMAAkAAADq/xEAAAAMAAkAAADr/xEAAAAMAAkAAADs/xEAAAAMAAkAAADt/xEAAAAMAAkAAADu/xEAAAAMAAkAAADv/xEAAAAMAAkAAADw/xEAAAAMAAkAAADx/xEAAAAMAAkAAADy/xEAAAAMAAkAAADz/xEAAAAMAAkAAAD0/xEAAAAMAAkAAAD1/xEAAAAMAAkAAAD2/xEAAAAMAAkAAAD3/xEAAAAMAAkAAAD4/xEAAAAMAAkAAAD5/xEAAAAMAAkAAAD6/xEAAAAMAAkAAAD7/xEAAAAMAAkAAAD8/xEAAAAMAAkAAAD9/xEAAAAMAAkAAAD+/xEAAAAMAAkAAAD//xEAAAAMAAkAAAAAABEAAAAMAAkAAAABABEAAAAMAAkAAAACABEAAAAMAAkAAAADABEAAAAMAAkAAAAEABEAAAAMAAkAAAAFABAAAAAMAAkAAAAGABAAAAAMAAkAAAAHABAAAAAMAAkAAAAIABAAAAAMAAkAAAAJABAAAAAMAAkAAAAKABAAAAAMAAkAAAALABAAAAAMAAkAAAAMAA8AAAAMAAkAAAANAA8AAAAMAAkAAAAOAA8AAAAMAAkAAAAPAA4AAAAMAAkAAAAQAA4AAAAMAAkAAAARAA4AAAAMAAkAAAARAA0AAAAMAAkAAAASAA0AAAAMAAkAAAATAA0AAAAMAAkAAAATAAwAAAAMAAkAAAAUAAwAAAAMAAkAAAAVAAsAAAAMAAkAAAAWAAsAAAAMAAkAAAA=")
+tile_set = SubResource("TileSet_3lb3d")
