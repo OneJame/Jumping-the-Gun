@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var gravity := 1400.0
 @export var recoil := 800.0
 @export var cooldown := 0.5
-@export var drag := 0.2
+@export var drag := 0.02
 @export var bounce := 0.3
 
 @onready var gun: Node2D = $Gun
@@ -13,7 +13,7 @@ var can_fire := true
 func _physics_process(delta):
 	gun.look_at(get_global_mouse_position())
 	velocity.y += gravity * delta
-	velocity.x = move_toward(velocity.x, 0.0, abs(velocity.x) * drag * delta)
+	velocity.x = move_toward(velocity.x, 0.1, drag)
 	
 	if Input.is_action_pressed("shoot") and can_fire:
 		shoot()
