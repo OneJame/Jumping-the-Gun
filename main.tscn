@@ -21,7 +21,7 @@ sources/0 = SubResource("TileSetAtlasSource_h2yge")
 [node name="Node2D" type="Node2D" unique_id=1046711869]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1865652797]
-scale = Vector2(0.21154642, 0.21154642)
+scale = Vector2(0.4115473, 0.4115473)
 script = ExtResource("2_1bvp3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=262713146]

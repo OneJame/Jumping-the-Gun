@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
 @export var gravity := 1400.0
-@export var recoil := 800.0
-@export var cooldown := 0.5
+@export var recoil := 600.0
+@export var cooldown_ground := 0.6
+@export var cooldown_air := 1
 @export var drag := 0.02
 @export var bounce := 0.3
+@export var grounded = true
 
 @onready var gun: Node2D = $Gun
 
@@ -27,12 +29,18 @@ func _physics_process(delta):
 			velocity.y = 0.0
 func shoot():
 	can_fire = false
+	if is_on_floor():
+		grounded = true
+	else:
+		grounded = false
 	
 	var aim_dir := Vector2.RIGHT.rotated(gun.global_rotation)
 	var along := velocity.dot(-aim_dir)
 	if along <0.0:
 		velocity -= -aim_dir * along
 	velocity += -aim_dir * recoil
-	
-	await get_tree().create_timer(cooldown).timeout
+	if grounded:
+		await get_tree().create_timer(cooldown_ground).timeout
+	else:
+		await get_tree().create_timer(cooldown_air).timeout
 	can_fire = true
