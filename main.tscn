@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://do7qjadk4hxh8" path="res://Assets/icon.svg" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b3e8ssg8jwpd" path="res://player.gd" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://cp10tnl7mg3aq" path="res://camera.gd" id="3_272bh"]
 [ext_resource type="Texture2D" uid="uid://voljatdypbdh" path="res://Assets/brick-top.png" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cda0d5t57ft5n" path="res://Assets/brick-topLeft.png" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bp8ub108llb1h" path="res://Assets/brick.png" id="5_272bh"]
@@ -56,6 +57,7 @@ shape = SubResource("RectangleShape2D_5q38y")
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1856859019]
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+script = ExtResource("3_272bh")
 
 [node name="Gun" type="Node2D" parent="Player" unique_id=1666259827]
 

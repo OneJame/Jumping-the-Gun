@@ -37,6 +37,7 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, friction * delta)
 func shoot():
 	can_fire = false
+	$Camera2D.add_shake(4.0)
 	
 	var aim_dir := Vector2.RIGHT.rotated(gun.global_rotation)
 	var along := velocity.dot(-aim_dir)
