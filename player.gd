@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var drag := 150
 @export var bounce := 0.3
 @export var friction := 200
+@export var bullet_scene: PackedScene
 
 @onready var gun: Node2D = $Gun
 
@@ -35,12 +36,20 @@ func _physics_process(delta):
 		else:
 			velocity = pre_velocity.slide(normal)
 			velocity.x = move_toward(velocity.x, 0, friction * delta)
+	
+
 func shoot():
 	can_fire = false
 	$Camera2D.add_shake(4.0)
 	
 	var aim_dir := Vector2.RIGHT.rotated(gun.global_rotation)
+	var bullet = bullet_scene.instantiate()
+	bullet.global_position = $Gun/muzzle.global_position
+	bullet.direction = aim_dir
+	bullet.rotation = aim_dir.angle()
+	get_tree().current_scene.add_child(bullet)
 	var along := velocity.dot(-aim_dir)
+	
 	if along <0.0:
 		velocity -= -aim_dir * along
 	velocity += -aim_dir * recoil
